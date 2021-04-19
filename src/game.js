@@ -7,6 +7,7 @@ export class Game {
   leftScore = 0;
   rightScore = 0;
   dir = 'right';
+  isRunning = false;
 
   constructor(ctx, canvas) {
     this.ctx = ctx;
@@ -66,15 +67,7 @@ export class Game {
     //   this.ball.xVelocity = -this.ball.xVelocity * 1.04;
     //   this.ball.x = this.rightPaddle.x - this.ball.width;
     // }
-
-    this.ctx.fillStyle = 'black';
-    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-
-    this.renderScore();
-    this.leftPaddle.draw();
-    this.rightPaddle.draw();
-    this.ball.draw();
+    this.draw();
   }
 
   checkPaddleIntersects(paddle) {
@@ -96,6 +89,8 @@ export class Game {
   }
 
   startGame() {
+    this.isRunning = true;
+
     this.ctx.fillStyle = 'black';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -112,5 +107,17 @@ export class Game {
 
   stopGame() {
     clearInterval(this.intervalId);
+    this.isRunning = false;
+  }
+
+  draw() {
+    this.ctx.fillStyle = 'black';
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+    this.renderScore();
+    this.leftPaddle.draw();
+    this.rightPaddle.draw();
+    this.ball.draw();
   }
 }

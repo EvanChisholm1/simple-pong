@@ -17,11 +17,27 @@
         display: grid;
         place-items: center;
       }
+
+      .inner-container {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
     </style>
   </head>
   <body>
     <div class="container">
-      <canvas width="700" height="500" id="canvas"></canvas>
+      <div class="inner-container">
+        <canvas width="700" height="500" id="canvas"></canvas>
+        <div class="buttons">
+          <button id="start-button">start</button>
+          <button id="stop-button">stop</button>
+        </div>
+      </div>
     </div>
     <script src="./src/index.js" type="module"></script>
   </body>
